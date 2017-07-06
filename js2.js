@@ -1,0 +1,1 @@
+document.getElementById("demo").innerHTML = 9+3;
