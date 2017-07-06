@@ -1,4 +1,4 @@
-This is the Assignment number 2 CSS section
+This is the Assignment number 2 JS section
 Objective: Commit HTML, CSS & JavaScript assignments into GIT
 SECTION-1 HTML assignments--done
 SECTION-2 - CSS assignments
