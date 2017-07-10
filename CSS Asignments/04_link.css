@@ -1,8 +1,8 @@
-a:visited{
-	color:red;
-}
 a:link{
 	color:blue;
+}
+a:visited{
+	color:red;
 }
 a:active{
 	color:black;
