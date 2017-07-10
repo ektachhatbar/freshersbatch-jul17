@@ -1,0 +1,7 @@
+table,td,th{
+	border:solid 1px green;
+}
+th{
+	color:white;
+	background-color:green;
+}
