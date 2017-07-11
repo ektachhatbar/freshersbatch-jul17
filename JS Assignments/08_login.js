@@ -11,6 +11,6 @@ function login(){
 				document.getElementById("pwd").reset;
 			}
 			if(count>3){
-				document.write("Error");
+				alert.write("Error..!! No attempts Left");
 			}
 }
