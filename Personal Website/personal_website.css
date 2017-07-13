@@ -1,42 +1,36 @@
 @import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
 body{
 	background-image:url(sh3.png);
+	background-size: cover;
+    background-repeat:repeat;
 }
 p{
 	margin-left:110px;
 	margin-top:150px;
 	color:#EEEEED;
 	font-size:50px;
+	font-family: 'Sofia';
 }
 button.b1{
 	margin-left:1000px;
 	margin-top:120px;
-	background-color:#E0E6DF;
-	color:black;
+	
 }
 button.b2{
 	margin-left:1000px;
 	margin-top:10px;
-	background-color:#E0E6DF;
-	color:black;
 }
 button.b3{
 	margin-left:1000px;
 	margin-top:10px;
-	background-color:#E0E6DF;
-	color:black;
 }
 button.b4{
 	margin-left:1000px;
 	margin-top:10px;
-	background-color:#E0E6DF;
-	color:black;
 }
 .button {
   border-radius: 4px;
-  background-color: #f4511e;
   border: none;
-  color: #FFFFFF;
   text-align: center;
   font-size: 28px;
   padding: 10px;
@@ -44,6 +38,8 @@ button.b4{
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
+  background-color:#E0E6DF;
+	color:black;
 }
 
 .button span {
@@ -61,7 +57,6 @@ button.b4{
   right: -20px;
   transition: 0.5s;
 }
-
 .button:hover span {
   padding-right: 25px;
 }
