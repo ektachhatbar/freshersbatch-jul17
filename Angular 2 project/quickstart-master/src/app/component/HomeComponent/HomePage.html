@@ -1,0 +1,147 @@
+<header >
+  <nav class="navbar navbar-inverse navbar-fixed-top" style="padding:10px;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a ><img class="img-responsive" src="images/i1.png"></a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a  class="hvr-underline-from-center" style="text-decoration:none;"><span class="glyphicon glyphicon-home" style="color:white"></span><b style="color:white;"> Home</b></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a data-toggle="modal" href="#myModal" class="hvr-underline-from-center" style="text-decoration:none;"><span class="glyphicon glyphicon-lock" style="color:white"></span><b style="color:white;"> LOG IN</b></a></li>
+        <li><a data-toggle="modal" href="#myModal1" class="hvr-underline-from-center" style="text-decoration:none;"><span class="glyphicon glyphicon-user" style="color:white"></span><b style="color:white;"> SIGN UP</b></a></li>
+      </ul>
+      <form class="navbar-form navbar-right">
+        <div class="input-group">
+          <select class="form-control" id="cat" style="width:170px;" #searchRef>
+            <option>-Select Category-</option>
+            <option *ngFor="let category of categories">{{category}}</option>
+          </select>
+          <div class="input-group-btn">
+            <button (click)="Productsbycategory(searchRef.value)" class="btn btn-default" type="submit">
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </nav> 
+<header>
+
+<section style="padding:20px;margin-top:100px;">
+	<div style="background-color:#212121;" *ngFor="let advertisement of mySearchAdvertisement">
+			<h4 style="color:white;padding:5px;">Title : {{advertisement.title}}</h4>
+			<h4 style="color:white;padding:5px;">Category : {{advertisement.category}}</h4>
+			<h4 style="color:white;padding:5px;">Description : {{advertisement.description}}</h4>
+	</div>
+  <h2>All Advertise:</h2>
+  <div style="background-color:#212121;" *ngFor="let advertisement of advertisements">
+			<h4 style="color:white;padding:5px;">Title : {{advertisement.title}}</h4><hr>
+			<h4 style="color:white;padding:5px;">Category : {{advertisement.category}}</h4>
+			<h4 style="color:white;padding:5px;">Posted By : {{advertisement.username}}</h4>
+			<h4 style="color:white;padding:5px;">Description : {{advertisement.description}}</h4>
+	</div>
+</section>
+
+
+
+        
+<!-- Login Modal-->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#212121;">
+        <button type="button" class="close" data-dismiss="modal" style="color:white;">&times;</button>
+        <h3 class="modal-title" style="color:white;text-align:center">LOGIN</h3>
+      </div>
+      <div class="modal-body" style="background-color:#ECEBEB;">
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)" novalidate>
+
+          <div class="input-group">
+            <label>Userame</label>
+              <input type="text" name="name" required placeholder="Username" class="form-control" #nameRef1 #nameModelRef="ngModel" ngModel>
+              <div *ngIf="nameModelRef.errors && nameModelRef.touched" class="alert alert-danger">
+                  <div [hidden]="!nameModelRef.errors.required" >Please enter your username </div>
+              </div>
+          </div><br>
+          <div class="input-group">
+            <label>Password</label>
+              <input id="pass" type="password" required class="form-control" name="password"  placeholder="Password" #passwordRef1 #passwordModelRef="ngModel" ngModel>
+              <div *ngIf="passwordModelRef.errors && passwordModelRef.touched" class="alert alert-danger">
+                  <div [hidden]="!passwordModelRef.errors.required" >Please enter your password </div>
+              </div>
+          </div>
+          <br><br>
+          <button [disabled]="!loginForm.form.valid" (click)="checkLogin(nameRef1.value,passwordRef1.value)"  type="submit" data-dismiss="modal" class="btn" style="margin-left:100px;background-color:#212121;color:white;" >Log In</button>
+        </form>
+		  </div>
+    </div>
+  </div>
+</div>
+  <!-- Modal End-->
+  
+  <!--Sign Up Modal -->
+  <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color:#212121;">
+          <button type="button" class="close" data-dismiss="modal" style="color:white;">&times;</button>
+          <h3 class="modal-title" style="color:white;text-align:center">SIGN UP</h3>
+        </div>
+        <div class="modal-body" style="background-color:#ECEBEB;">
+			<form #signUpForm="ngForm" (ngSubmit)="onSubmit(signUpForm.value)" novalidate>
+
+			<div class="input-group">
+				<label>First Name</label>
+					<input type="text" name="fname" required placeholder="Enter your First Name" class="form-control" #fnameRef #fnameModelRef="ngModel" ngModel>
+            <div *ngIf="fnameModelRef.errors && fnameModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!fnameModelRef.errors.required" >Please enter your username </div>
+             </div>
+				</div>
+                <div class="input-group">
+				<label>Last Name</label>
+					<input type="text" name="lname" required placeholder="Enter your Last Name" class="form-control" #lnameRef #lnameModelRef="ngModel" ngModel>
+            <div *ngIf="lnameModelRef.errors && lnameModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!lnameModelRef.errors.required" >Please enter your username </div>
+             </div>
+				</div>
+				<div class="input-group">
+				<label>UserName</label>
+					<input type="text" name="uname" required placeholder="Enter your Username" class="form-control" #unameRef #unameModelRef="ngModel" ngModel>
+            <div *ngIf="unameModelRef.errors && unameModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!unameModelRef.errors.required" >Please enter username </div>
+             </div>
+				</div>
+                <div class="input-group">
+				<label>Password</label>
+					<input type="password" required class="form-control" name="password" placeholder="Enter Password" #passwordRef #passwordModelRef="ngModel" ngModel>
+					<div *ngIf="passwordModelRef.errors && passwordModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!passwordModelRef.errors.required" >Please enter your password </div>
+             </div>
+				</div>
+				<div class="input-group">
+				<label>Email</label>
+					<input type="email" required class="form-control" name="email" placeholder="Enter Your Email Address" #emailRef #emailModelRef="ngModel" ngModel>
+					<div *ngIf="emailModelRef.errors && emailModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!emailModelRef.errors.required" >Please enter your email </div>
+             </div>
+				</div>
+				<div class="input-group">
+				<label>Phone Number</label>
+					<input id="pass" type="number" required maxlength="10" class="form-control" name="phone" placeholder="Enter Your Phone Number" #phoneRef #phoneModelRef="ngModel" ngModel>
+					<div *ngIf="phoneModelRef.errors && phoneModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!phoneModelRef.errors.required" >Please enter your phone number </div>
+                <div [hidden]="!phoneModelRef.errors.maxlength"> Phone Number length should be maximum 10 </div>
+             </div>
+				</div>
+				<br>
+        
+          <button [disabled]="!signUpForm.form.valid" (click)="checkRegister(fnameRef.value,lnameRef.value,unameRef.value,passwordRef.value,emailRef.value,phoneRef.value)"   type="submit" data-dismiss="modal" class="btn" style="margin-left:100px;background-color:#212121;color:white;" >Sign Up</button>
+				</form>
+<br>
+		</div>
+        
+      </div>
+    </div>
+  </div>
+  <!-- Modal End-->

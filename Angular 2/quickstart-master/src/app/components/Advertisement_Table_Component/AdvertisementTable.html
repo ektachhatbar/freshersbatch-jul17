@@ -1,0 +1,22 @@
+ <div class="form-group row">
+        <div class="col-md-3">
+            <label>Search</label>
+            <input type="text" placeholder="Search" name="search" #SearchAd (keyup)="0">
+        </div>
+    </div>
+<table border="2">
+    <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Actions</th>
+    </tr>   
+    <tr *ngFor="let adv of arr |SearchPipe: SearchAd.value">
+        <td>{{adv.name}}</td>
+        <td>{{adv.quantity}}</td>
+        <td>{{adv.price}}</td>
+        <td>{{adv.category}}</td>
+        <td><button (click)="editAd(adv.id,adv.name,adv.quantity,adv.price,adv.category)" type="button" class="btn btn-primary">Edit</button> / <button (click)="deleteAd(adv.id)" type="button" class="btn btn-primary">Delete</button>
+    </tr>
+</table>

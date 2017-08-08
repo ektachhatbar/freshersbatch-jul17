@@ -1,0 +1,170 @@
+
+<header>
+<nav class="navbar navbar-inverse navbar-fixed-top" style="padding:10px;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+		<img class="img-responsive" src="images/i1.png">
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a (click)="this.router.navigate(['/login'])" class="hvr-underline-from-center" style="text-decoration:none;"><span class="glyphicon glyphicon-home" style="color:white"></span><b style="color:white;"> Home</b></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+		<li><a data-toggle="modal" href="#myModal1" class="hvr-underline-from-center" style="text-decoration:none;"><span class="glyphicon glyphicon-upload" style="color:white"></span><b style="color:white;"> POST AD</b></a></li>
+	<!--	<li><a  data-toggle="modal" class="hvr-underline-from-center" style="text-decoration:none;"><span class="glyphicon glyphicon-user" style="color:white"></span><b style="color:white;"> MY_PROFILE</b></a></li>-->
+		<li><a (click)="logout()" class="hvr-underline-from-center" style="text-decoration:none;"><span class="glyphicon glyphicon-log-out" style="color:white"></span><b style="color:white;"> LOGOUT</b></a></li>
+    </ul>
+		 <form class="navbar-form navbar-right">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search" #searchRef>
+        <div class="input-group-btn">
+          <button  class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</nav> 
+<header>
+
+	<section style="padding:20px;">
+	<div style="margin-top:100px;padding:20px;">
+			<h1 style="color:black;text-align:center;">Welcome {{name}}...!!!</h1>
+	</div>
+	<h2>Your Ads :</h2>
+<div style="background-color:#212121;" *ngFor="let advertisement of myadvertisements">
+<h4 style="color:white;padding:10px;">Title : {{advertisement.title}}</h4>
+			<h4 style="color:white;padding:10px;">Category : {{advertisement.category}}</h4>
+			<h4 style="color:white;padding:10px;">Description : {{advertisement.description}}</h4>
+			<a data-toggle="modal" href="#myModal" class="hvr-underline-from-center" style="text-decoration:none;padding:20px;"><span class="glyphicon glyphicon-edit" style="color:white"></span><b style="color:white;"> EDIT AD</b></a>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a data-toggle="modal" href="#" class="hvr-underline-from-center" style="text-decoration:none;padding:20px;"><span class="glyphicon glyphicon-trash" style="color:white"></span><b style="color:white;"> DELETE AD</b></a>
+			</div>
+
+</section>
+
+
+
+
+
+<!--Edit Ad Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color:#212121;">
+          <button type="button" class="close" data-dismiss="modal" style="color:white;">&times;</button>
+          <h3 class="modal-title" style="color:white;text-align:center">EDIT AD</h3>
+        </div>
+        <div class="modal-body" style="background-color:#ECEBEB;">
+			<div class="mbdiv">
+			<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+					<input id="name" type="text" class="form-control" name="name" style="width:170px;" placeholder="Enter Location">
+				</div><br>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+					<select class="form-control" id="cat" style="width:170px;" #categoryRef>
+						<option>-Select Category-</option>
+						<option *ngFor="let category of categories">{{category}}</option>
+						</select>
+					</div><br>
+					<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-exclamation-sign"></i></span>
+					<input id="name" type="text" class="form-control" name="tit" style="width:170px;" placeholder="Enter Title">
+				</div><br>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+					<textarea id="des" class="form-control" name="des" style="width:170px;height:100px;" placeholder="Description"></textarea>
+				</div><br>
+				<div class="input-group">
+				  <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+				  <input id="email" type="email" class="form-control" name="email" style="width:170px;" placeholder="Email address">
+				</div><br>
+			</div>
+		</div>
+        <div class="modal-footer" style="background-color:#212121;">
+          <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right:100px;">Edit Ad</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal End-->
+  
+  <!--Post Ad Modal -->
+  <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color:#212121;">
+          <button type="button" class="close" data-dismiss="modal" style="color:white;">&times;</button>
+          <h3 class="modal-title" style="color:white;text-align:center">POST AD</h3>
+        </div>
+        <div class="modal-body" style="background-color:#ECEBEB;">
+					        <form #postAdForm="ngForm" (ngSubmit)="onSubmit(postAdForm.value)" novalidate>
+				<div class="form-group">
+                <label for="ad_title">Title:</label>
+                <input class="form-control" name="ad_title" required minlength="3" type="text" 
+                #titleRef #titleModelRef="ngModel" ngModel>
+                <div *ngIf="titleModelRef.errors && titleModelRef.touched" class="alert alert-danger">
+                    <div [hidden]="!titleModelRef.errors.required" >Please enter the title </div>
+                    <div [hidden]="!titleModelRef.errors.minlength"> Title length should be minimum 3 characters </div>
+                </div>
+				<br>
+			<div class="form-group">
+                <label for="name">Enter your name:</label>
+                <input class="form-control" name="name" type="text" required minlength="3" #nameRef 
+                #nameModelRef="ngModel" ngModel>
+                <div *ngIf="nameModelRef.errors && nameModelRef.touched" class="alert alert-danger">
+                    <div [hidden]="!nameModelRef.errors.required" >Please enter your name </div>
+                    <div [hidden]="!nameModelRef.errors.minlength"> Name length should be minimum 3 characters </div>
+                </div>
+			</div><br>
+				
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+					<select class="form-control" id="cat" style="width:229px;" #categoryRef1>
+						<option>-Select Category-</option>
+						<option *ngFor="let category of categories">{{category}}</option>
+						</select>
+					</div><br>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+					<textarea id="des" class="form-control" name="description" style="width:229px;height:100px;" placeholder="Description" #descriptionRef></textarea>
+				</div><br>
+				</div>
+				<button [disabled]="!postAdForm.form.valid" type="submit" (click)="postAd(titleRef.value,nameRef.value,categoryRef1.value,descriptionRef.value)" class="btn btn-default" data-dismiss="modal" style="margin-left:100px;background-color:#212121;color:white;" >Post Ad</button>
+				</form>
+		</div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal End-->
+  
+  <!--Delete Ad Modal -->
+  <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color:#212121;">
+          <button type="button" class="close" data-dismiss="modal" style="color:white;">&times;</button>
+          <h3 class="modal-title" style="color:white;text-align:center">DELETE AD</h3>
+        </div>
+        <div class="modal-body" style="background-color:#ECEBEB;">
+			<div class="mbdiv">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+					<select class="form-control" id="cat" style="width:170px;" #categoryRef>
+						<option>-Select Category-</option>
+						<option *ngFor="let category of categories">{{category}}</option>
+						</select>
+					</div><br>
+					<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-exclamation-sign"></i></span>
+					<input id="name" type="text" class="form-control" name="tit" style="width:170px;" placeholder="Enter Title">
+				</div><br>
+			</div>
+		</div>
+        <div class="modal-footer" style="background-color:#212121;">
+          <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right:100px;">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal End-->

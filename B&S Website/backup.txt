@@ -1,0 +1,143 @@
+<h1 style="text-align:center;color:black;margin-top:100px;">TODAY'S DEALS</h1><hr style="width:300px;margin-left:523px;">
+	<section style="margin-top:70px;">
+		<div class="sub-cate" style="margin-top:-100px;">
+			<h3 class="cate">CATEGORIES</h3>
+			<ul class="menu">
+			  
+				<li class="w3-dropdown-hover" style="width:100%;background-color:#E6E6E6;">
+						<a href="Electronics.html">ELECTRONICS</a>
+						<div class="w3-dropdown-content w3-bar-block w3-border">
+							<a href="Electronics.html" class="w3-bar-item w3-button">Mobiles</a>
+							<a href="Electronics.html" class="w3-bar-item w3-button">Laptops</a>
+							<a href="Electronics.html" class="w3-bar-item w3-button">Televisions</a>
+						</div>
+				</li>
+				<li class="w3-dropdown-hover" style="width:100%;">
+					<a href="#">APPLIANCES</a>
+						<div class="w3-dropdown-content w3-bar-block w3-border">
+							<a href="#" class="w3-bar-item w3-button">Link 1</a>
+							<a href="#" class="w3-bar-item w3-button">Link 2</a>
+							<a href="#" class="w3-bar-item w3-button">Link 3</a>
+						</div>
+				</li>
+				<li class="w3-dropdown-hover" style="width:100%;">
+					<a href="#">MEN</a>
+					<div class="w3-dropdown-content w3-bar-block w3-border">
+							<a href="#" class="w3-bar-item w3-button">Link 1</a>
+							<a href="#" class="w3-bar-item w3-button">Link 2</a>
+							<a href="#" class="w3-bar-item w3-button">Link 3</a>
+					</div>
+				</li>
+				<li class="w3-dropdown-hover" style="width:100%;">
+					<a href="#">WOMEN</a>
+					<div class="w3-dropdown-content w3-bar-block w3-border">
+							<a href="#" class="w3-bar-item w3-button">Link 1</a>
+							<a href="#" class="w3-bar-item w3-button">Link 2</a>
+							<a href="#" class="w3-bar-item w3-button">Link 3</a>
+					</div>
+				</li>
+				<li class="w3-dropdown-hover" style="width:100%;">
+					<a href="#">BABY & KIDS</a>
+					<div class="w3-dropdown-content w3-bar-block w3-border">
+							<a href="#" class="w3-bar-item w3-button">Link 1</a>
+							<a href="#" class="w3-bar-item w3-button">Link 2</a>
+							<a href="#" class="w3-bar-item w3-button">Link 3</a>
+					</div>
+				</li>
+				<li class="w3-dropdown-hover" style="width:100%;">
+					<a href="#">HOME & FURNITURE</a>
+					<div class="w3-dropdown-content w3-bar-block w3-border">
+							<a href="#" class="w3-bar-item w3-button">Link 1</a>
+							<a href="#" class="w3-bar-item w3-button">Link 2</a>
+							<a href="#" class="w3-bar-item w3-button">Link 3</a>
+					</div>
+				</li>
+				<li class="w3-dropdown-hover" style="width:100%;">
+					<a href="#">BOOKS & MORE</a>
+					<div class="w3-dropdown-content w3-bar-block w3-border">
+							<a href="#" class="w3-bar-item w3-button">Link 1</a>
+							<a href="#" class="w3-bar-item w3-button">Link 2</a>
+							<a href="#" class="w3-bar-item w3-button">Link 3</a>
+					</div>
+				</li>
+				<li class="w3-dropdown-hover" style="width:100%;"><a href="#">BIKES & CARS</a></li>
+				<li class="w3-dropdown-hover" style="width:100%;"><a href="#">OFFER ZONE</a></li>
+			</ul>
+			
+		</div>
+		
+		<div class="images">
+				<div class="imgs">
+					<a href="#"><img class="img-responsive" src="i2.jpg"></a>
+					<div class="middle">
+						<button class="btn btn-success text"><a href="QuickShop.html" style="text-decoration:none;color:white;">Quick Shop</a></button>
+					</div>
+					<div class="info">
+						<br><h4 style="text-align:center;"><small><strike>Rs. 1299</strike></small> <b style="color:#73E714">Rs. 999</b><br>
+						Everest Base Camp Tee
+						</h4>
+					</div>
+				</div>
+				<div class="imgs" style="margin-left:580px;margin-top:-277px;">
+					<a href="#"><img class="img-responsive" src="i3.jpg" style="height:270px;"></a>
+					<div class="middle">
+						<button class="btn btn-success text">Quick Shop</button>
+					</div>
+					<div class="info">
+						<br><h4 style="text-align:center;"><small><strike>Rs. 2000</strike></small> <b style="color:#73E714">Rs. 1599</b><br>
+						Casual Sneakers
+						</h4>
+					</div>
+				</div>
+				<div class="imgs" style="margin-left:865px;margin-top:-277px;">
+					<a href="#"><img class="img-responsive" src="i4.jpg" style="height:270px;"></a>
+					<div class="middle">
+						<button class="btn btn-success text">Quick Shop</button>
+					</div>
+					<div class="info">
+						<br><h4 style="text-align:center;"><small><strike>Rs. 999</strike></small> <b style="color:#73E714">Rs. 699</b><br>
+						Designer HandBag
+						</h4>
+					</div>
+				</div>
+				<div class="imgs" style="margin-top:77px;">
+					<a href="#"><img class="img-responsive" src="i5.jpg" style="height:270px;"></a>
+					<div class="middle">
+						<button class="btn btn-success text">Quick Shop</button>
+					</div>
+					<div class="info">
+						<br><h4 style="text-align:center;"><small><strike>Rs. 12999</strike></small> <b style="color:#73E714">Rs. 11999</b><br>
+						FREE Dragonball Z Gohan Phone Case
+						</h4>
+					</div>
+				</div>
+				<div class="imgs" style="margin-left:580px;margin-top:-277px;">
+					<a href="#"><img class="img-responsive" src="i6.jpg" style="height:270px;"></a>
+					<div class="middle">
+						<button class="btn btn-success text">Quick Shop</button>
+					</div>
+					<div class="info">
+						<br><h4 style="text-align:center;"><small><strike>Rs. 4999</strike></small> <b style="color:#73E714">Rs. 2999</b><br>
+						Casio Edifice Analog Black Dial Men's Watch
+						</h4>
+					</div>
+				</div>
+				<div class="imgs" style="margin-left:865px;margin-top:-277px;">
+					<a href="#"><img class="img-responsive" src="i7.jfif" style="height:270px;"></a>
+					<div class="middle">
+						<button class="btn btn-success text">Quick Shop</button>
+					</div>
+					<div class="info">
+						<br><h4 style="text-align:center;"><small><strike>Rs. 7999</strike></small> <b style="color:#73E714">Rs. 5999</b><br>
+						TEFAL Pink Cookware Set Nonstick Pots Pans 14 Piece Kitchenware Kitchen Cooking
+						</h4>
+					</div>
+				</div>
+				<div style="width:200px;height:720px;background-color:#212121;margin-left:1130px;margin-top:-770px;">
+					<h3 style="color:#C8CAC6;text-align:center;">Ads</h3>
+				</div>
+		<div>
+	</section>
+		<br><br>
+		<br><br><br>
+
