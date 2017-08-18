@@ -1,10 +1,5 @@
 package com.corejava.collections;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
 import java.util.*;
 
 class ChatRoom {
@@ -120,10 +115,10 @@ public class ChatApplication {
 							System.out.println("2 for Logout");
 							switch(Integer.parseInt(scan.nextLine())){
 							case 1:
-								System.out.println("----------Enter Message:--------------");
+								System.out.println("Enter Message:");
 								String message = scan.nextLine();
 								foundRoom3.addMessage(message);
-								System.out.println("------------------ Message Added-------------");
+								System.out.println("Message Added");
 							break;
 							case 2:
 								break login;
@@ -139,9 +134,8 @@ public class ChatApplication {
 				String chatroom4 = scan.nextLine();
 				ChatRoom foundRoom4 = searchChatRoom(roomlist,chatroom4);
 				if(foundRoom4 instanceof ChatRoom) {
-					System.out.println("---------------------"  + chatroom4 + "Messages--------------------");
+					System.out.println(chatroom4 + "Messages");
 					foundRoom4.displayMessages();
-					System.out.println("-------------------------------------------------------------------");
 				}
 				else{
 					System.out.println("No ChatRoom Exist");
@@ -152,13 +146,12 @@ public class ChatApplication {
 				String chatroom5 = scan.nextLine();
 				ChatRoom foundRoom5 = searchChatRoom(roomlist,chatroom5);
 				if(foundRoom5 instanceof ChatRoom){
-					System.out.println("-----------user list--------------");
+					System.out.println("User's list");
 					foundRoom5.displayUser();
 				}
 				else
 					System.out.println("user list not printed");
-				System.out.println("-----------------------------------");
-			break;
+				break;
 			case 6:
 				System.out.println("Enter user name:");
 				String username6 = scan.nextLine();
@@ -174,7 +167,7 @@ public class ChatApplication {
 			case 7:
 				System.out.println("Enter ChatRoom name:");
 				String chatroom7 = scan.nextLine();
-				System.out.println("------------------ChatRoom Deleted--------------");
+				System.out.println("ChatRoom Deleted");
 			break;
 			}
 		}
