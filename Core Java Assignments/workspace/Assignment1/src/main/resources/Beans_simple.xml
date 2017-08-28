@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<!-- Enable Annotation based configuration -->
+	<context:annotation-config />
+
+	<!-- <bean id="itembean1" class="com.spring.Assignment1.ItemBean"> <property 
+		name="itemName" value="Candy" /> <property name="itemprice" value="50" /> 
+		</bean> <bean id="itembean2" class="com.spring.Assignment1.ItemBean"> <property 
+		name="itemName" value="Candy" /> <property name="itemprice" value="50" /> 
+		</bean> <bean id="itembean3" class="com.spring.Assignment1.ItemBean"> <property 
+		name="itemName" value="Candy" /> <property name="itemprice" value="90" /> 
+		</bean> <bean id="orderBean1" class="com.spring.Assignment1.OrderBean"> <property 
+		name="orderID" value="55" /> <property name="itembean"> <ref bean="itembean1" 
+		/> </property> </bean> <bean id="orderBean2" class="com.spring.Assignment1.OrderBean"> 
+		<property name="orderID" value="55" /> <property name="itembean"> <ref bean="itembean2" 
+		/> </property> </bean> <bean id="orderBean3" class="com.spring.Assignment1.OrderBean"> 
+		<property name="orderID" value="99" /> <property name="itembean"> <ref bean="itembean3" 
+		/> </property> </bean> -->
+	<bean id="user1" class="com.spring.Assignment1.UserBean"> 
+		<property name="userName" value="Tom" /> 
+	</bean>
+	<bean id="user2" class="com.spring.Assignment1.UserBean"> 
+		<property name="userName" value="Mary" /> 
+	</bean>
+	<bean id="user3" class="com.spring.Assignment1.UserBean"> 
+		<property name="userName" value="John" /> 
+	</bean>
+	<bean id="user4" class="com.spring.Assignment1.UserBean"> 
+		<property name="userName" value="Harvey" /> 
+	</bean>
+	<bean id="user5" class="com.spring.Assignment1.UserBean"> 
+		<property name="userName" value="Mike" /> 
+	</bean>
+	<bean id="chatRoomBean1" class="com.spring.Assignment1.ChatroomBean">
+		<property name="chatRoomName" value="chatroom1" />
+		<property name="userbean">
+			<set>
+				<ref bean="user1"/>
+				<ref bean="user2"/>
+				<ref bean="user3"/>
+			</set>
+		</property>
+		<property name="messages">          
+			<list>              
+				<value>Hello</value>              
+				<value>Hieeee</value>              
+				<value>Hey</value>              
+				<value>Happy</value>          
+			</list>      
+		</property> 
+	</bean>
+	
+	<bean id="chatRoomBean2" class="com.spring.Assignment1.ChatroomBean">
+		<property name="chatRoomName" value="chatroom2" />
+		<property name="userbean">
+			<set>
+				<ref bean="user4"/>
+				<ref bean="user5"/>
+			</set>
+		</property>
+		<property name="messages">          
+			<list>              
+				<value>Deal..!!</value>              
+				<value>Happy</value>          
+			</list>      
+		</property> 
+	</bean>
+
+
+	<bean id="deptBean" class="com.spring.Assignment1.DepartmentBean"> 
+		<property name="deptName" value="QuickOffice" /> 
+	</bean> 
+	<bean id="employee" class="com.spring.Assignment1.EmployeeBean" autowire="constructor"> 
+		<property name="empName" value="Ivan" /> 
+		<constructor-arg value = ""/>
+	</bean> 
+	
+</beans>
+
+
+
