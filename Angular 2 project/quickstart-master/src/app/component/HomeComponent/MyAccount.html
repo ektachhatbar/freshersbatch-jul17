@@ -10,7 +10,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
 		<li><a data-toggle="modal" href="#myModal1" class="hvr-underline-from-center" style="text-decoration:none;"><span class="glyphicon glyphicon-upload" style="color:white"></span><b style="color:white;"> POST AD</b></a></li>
-	<!--	<li><a  data-toggle="modal" class="hvr-underline-from-center" style="text-decoration:none;"><span class="glyphicon glyphicon-user" style="color:white"></span><b style="color:white;"> MY_PROFILE</b></a></li>-->
+	<li><a href="#userProfile" data-toggle="modal" class="hvr-underline-from-center" style="text-decoration:none;"><span class="glyphicon glyphicon-user" style="color:white"></span><b style="color:white;"> MY_PROFILE</b></a></li>
 		<li><a (click)="logout()" class="hvr-underline-from-center" style="text-decoration:none;"><span class="glyphicon glyphicon-log-out" style="color:white"></span><b style="color:white;"> LOGOUT</b></a></li>
     </ul>
 		 <form class="navbar-form navbar-right">
@@ -32,13 +32,17 @@
 			<h1 style="color:black;text-align:center;">Welcome {{name}}...!!!</h1>
 	</div>
 	<h2>Your Ads :</h2>
-<div style="background-color:#212121;" *ngFor="let advertisement of myadvertisements">
+<div style="background-color:#212121;padding-bottom:7px;" *ngFor="let advertisement of allAdver">
 <h4 style="color:white;padding:10px;">Title : {{advertisement.title}}</h4>
 			<h4 style="color:white;padding:10px;">Category : {{advertisement.category}}</h4>
 			<h4 style="color:white;padding:10px;">Description : {{advertisement.description}}</h4>
-			<a data-toggle="modal" href="#myModal" class="hvr-underline-from-center" style="text-decoration:none;padding:20px;"><span class="glyphicon glyphicon-edit" style="color:white"></span><b style="color:white;"> EDIT AD</b></a>
-			&nbsp;&nbsp;&nbsp;&nbsp;<a data-toggle="modal" href="#" class="hvr-underline-from-center" style="text-decoration:none;padding:20px;"><span class="glyphicon glyphicon-trash" style="color:white"></span><b style="color:white;"> DELETE AD</b></a>
-			</div>
+      
+      <p style="background-color:#212121;" style="display:inline;">
+        <a href="#" class="btn btn-default" style="text-decoration:none;padding:7px;margin-left:20px;" ><span class="glyphicon glyphicon-eye" style="color:black;"></span><b style="color:black"> View Ad</b></a>
+        <a data-toggle="modal" data-target="#myModal" (click)="this.updateId=advertisement.id" class="btn btn-default" style="text-decoration:none;padding:7px;margin-left:20px;" ><span class="glyphicon glyphicon-edit" style="color:black"></span><b style="color:black;"> UPDATE</b></a>
+        <a (click)="deleteAd(advertisement.id)" class="btn btn-default" style="text-decoration:none;padding:7px;margin-left:20px;" ><span class="glyphicon glyphicon-trash" style="color:black"></span><b style="color:black;"> DELETE</b></a>
+			</p>
+  </div>
 
 </section>
 
@@ -52,38 +56,44 @@
       <div class="modal-content">
         <div class="modal-header" style="background-color:#212121;">
           <button type="button" class="close" data-dismiss="modal" style="color:white;">&times;</button>
-          <h3 class="modal-title" style="color:white;text-align:center">EDIT AD</h3>
+          <h3 class="modal-title" style="color:white;text-align:center">UPDATE AD</h3>
         </div>
-        <div class="modal-body" style="background-color:#ECEBEB;">
-			<div class="mbdiv">
-			<div class="input-group">
-					<span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-					<input id="name" type="text" class="form-control" name="name" style="width:170px;" placeholder="Enter Location">
-				</div><br>
+        <div class="modal-body" style="background-color:#ECEBEB;" *ngFor="let adv of allAdver">
+					        <form #updateAdForm="ngForm" (ngSubmit)="onSubmit(updateAdForm.value)" *ngIf="(this.updateId==adv.id)" novalidate>
+				<div class="form-group" >
+                <label for="ad_title">Title:</label>
+                <input class="form-control" name="ad_title" required minlength="3" type="text" ngModel="{{adv.title}}"
+                #utitleRef #titleModelRef="ngModel" ngModel>
+                <div *ngIf="titleModelRef.errors && titleModelRef.touched" class="alert alert-danger">
+                    <div [hidden]="!titleModelRef.errors.required" >Please enter the title </div>
+                    <div [hidden]="!titleModelRef.errors.minlength"> Title length should be minimum 3 characters </div>
+                </div>
+				<br>
+			<div class="form-group">
+                <label for="name">Enter your name:</label>
+                <input class="form-control" name="name" type="text" ngModel="{{adv.name}}" required minlength="3" #unameRef 
+                #nameModelRef="ngModel" ngModel>
+                <div *ngIf="nameModelRef.errors && nameModelRef.touched" class="alert alert-danger">
+                    <div [hidden]="!nameModelRef.errors.required" >Please enter your name </div>
+                    <div [hidden]="!nameModelRef.errors.minlength"> Name length should be minimum 3 characters </div>
+                </div>
+			</div><br>
+				
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
-					<select class="form-control" id="cat" style="width:170px;" #categoryRef>
-						<option>-Select Category-</option>
+					<select class="form-control" id="cat" style="width:229px;" #ucategoryRef1>
+						<option>{{adv.category}}</option>
 						<option *ngFor="let category of categories">{{category}}</option>
 						</select>
 					</div><br>
-					<div class="input-group">
-					<span class="input-group-addon"><i class="glyphicon glyphicon-exclamation-sign"></i></span>
-					<input id="name" type="text" class="form-control" name="tit" style="width:170px;" placeholder="Enter Title">
-				</div><br>
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
-					<textarea id="des" class="form-control" name="des" style="width:170px;height:100px;" placeholder="Description"></textarea>
+					<textarea id="des" class="form-control" name="description" style="width:229px;height:100px;" placeholder="Description" #udescriptionRef>{{adv.description}}</textarea>
 				</div><br>
-				<div class="input-group">
-				  <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-				  <input id="email" type="email" class="form-control" name="email" style="width:170px;" placeholder="Email address">
-				</div><br>
-			</div>
+				</div>
+				<button [disabled]="!updateAdForm.form.valid" type="submit" (click)="updateAd(this.updateId,utitleRef.value,unameRef.value,ucategoryRef1.value,udescriptionRef.value)" class="btn btn-default" data-dismiss="modal" style="margin-left:100px;background-color:#212121;color:white;" >Update Ad</button>
+				</form>
 		</div>
-        <div class="modal-footer" style="background-color:#212121;">
-          <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right:100px;">Edit Ad</button>
-        </div>
       </div>
     </div>
   </div>
@@ -138,32 +148,24 @@
   </div>
   <!-- Modal End-->
   
-  <!--Delete Ad Modal -->
-  <div class="modal fade" id="myModal2" role="dialog">
+  <!--User Profile Modal -->
+  <div class="modal fade" id="userProfile" role="dialog">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header" style="background-color:#212121;">
           <button type="button" class="close" data-dismiss="modal" style="color:white;">&times;</button>
-          <h3 class="modal-title" style="color:white;text-align:center">DELETE AD</h3>
+          <h3 class="modal-title" style="color:white;text-align:center">User Profile</h3>
         </div>
         <div class="modal-body" style="background-color:#ECEBEB;">
-			<div class="mbdiv">
-				<div class="input-group">
-					<span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
-					<select class="form-control" id="cat" style="width:170px;" #categoryRef>
-						<option>-Select Category-</option>
-						<option *ngFor="let category of categories">{{category}}</option>
-						</select>
-					</div><br>
-					<div class="input-group">
-					<span class="input-group-addon"><i class="glyphicon glyphicon-exclamation-sign"></i></span>
-					<input id="name" type="text" class="form-control" name="tit" style="width:170px;" placeholder="Enter Title">
-				</div><br>
-			</div>
-		</div>
-        <div class="modal-footer" style="background-color:#212121;">
-          <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right:100px;">Delete</button>
-        </div>
+          <div *ngFor="let user of userinfo">
+      <h4 style="padding:10px;">FirstName : {{user.firstName}}</h4>
+			<h4 style="padding:10px;">LastName : {{user.lastName}}</h4>
+      <h4 style="padding:10px;">Email : {{user.email}}</h4>
+			<h4 style="padding:10px;">Phone : {{user.phone}}</h4>
+      
+      
+      </div>
+		    </div>
       </div>
     </div>
   </div>

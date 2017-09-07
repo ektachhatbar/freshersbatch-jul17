@@ -23,7 +23,7 @@ export class UserProfileComponent {
     token: any;
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private adservices: AdvertisementService, private loginservices: LoginService) {
-        this.userName = this.loginservices.getUserName();
+      /*  this.userName = this.loginservices.getUserName();
         this.loginservices.getUserProfile().subscribe((response: any) => {
             this.userDetails = response.data['user'];
             this.firstName = this.userDetails.firstName;
@@ -39,7 +39,7 @@ export class UserProfileComponent {
             console.log("user:",this.userDetails);
             console.log(response);
 
-        })
+        })*/
     }
     ngOnInit() { this.token = this.activatedRoute.snapshot.params['auth-token']; 
 console.log("hweqf ",this.token);
